@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Mu'ammar Kadafi</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'deep-blue': '#0B1E3C',   /* Hero / Primary Background */
+                        'mid-blue': '#1F4E79',    /* Primary Action */
+                        'soft-blue': '#4F7CAC',   /* Accent */
+                        'pale-blue': '#EAF2FB',   /* Light Section */
+                        'glass-white': 'rgba(255,255,255,0.08)',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px rgba(0,0,0,0.15)',
+                        'glass': '0 8px 32px rgba(0,0,0,0.2)',
+                    }
+                }
+            }
+        }
+        </script>
+        
+    
+        <style>
+            /* === GLOBAL TRANSITION === */
+            * {
+                scroll-behavior: smooth;
+            }
+            
+            /* === REVEAL ANIMATION === */
+            .reveal-element {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.9s ease, transform 0.9s ease;
+            }
+            
+            .reveal-element.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            /* === ORNAMENT PATTERN (SUBTLE) === */
+            .dots-pattern {
+                background-image: radial-gradient(
+                    rgba(79,124,172,0.35) 1px,
+                    transparent 1px
+                );
+                background-size: 28px 28px;
+            }
+            
+            /* === HERO ALIGNMENT === */
+            .hero-container {
+                align-items: center;
+            }
+            
+            /* === GLASS NAVBAR === */
+            .glass-nav {
+                background: linear-gradient(
+                    180deg,
+                    rgba(11,30,60,0.92),
+                    rgba(11,30,60,0.75)
+                );
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+            }
+            
+            /* === GLASS CARD (OPTIONAL) === */
+            .glass-card {
+                background: rgba(255,255,255,0.06);
+                backdrop-filter: blur(16px);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 1rem;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            }
+            </style>
+            
+</head>
+<body class="bg-pale-blue text-deep-blue antialiased selection:bg-mid-blue selection:text-white">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-code text-soft-blue"></i>
+                        Mr. Kadafi
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-white/80 hover:text-white px-3 py-2 font-medium transition">Home</a>
+                        <a href="#skills" class="text-white/80 hover:text-white px-3 py-2 font-medium transition">Skills</a>
+                        <a href="#experience" class="text-white/80 hover:text-white px-3 py-2 font-medium transition">Experience</a>
+                        <a href="#education" class="text-white/80 hover:text-white px-3 py-2 font-medium transition">Education</a>
+                        <a href="#contact" class="bg-mid-blue text-white px-5 py-2 rounded-lg font-medium hover:bg-soft-blue transition shadow-lg shadow-mid-blue/50">Contact Me</a>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-soft-blue text-2xl focus:outline-none">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden bg-deep-blue border-t border-white/10 absolute w-full shadow-2xl" id="mobile-menu">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#home" class="block px-3 py-3 text-white font-medium hover:bg-white/5 rounded">Home</a>
+                <a href="#skills" class="block px-3 py-3 text-white font-medium hover:bg-white/5 rounded">Skills</a>
+                <a href="#experience" class="block px-3 py-3 text-white font-medium hover:bg-white/5 rounded">Experience</a>
+                <a href="#education" class="block px-3 py-3 text-white font-medium hover:bg-white/5 rounded">Education</a>
+                <a href="#contact" class="block px-3 py-3 text-soft-blue font-bold rounded">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home"
+    class="bg-deep-blue min-h-screen pt-28 flex items-center relative overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div class="flex flex-col-reverse md:flex-row items-center gap-12">
+
+            <!-- TEXT -->
+            <div
+                class="md:w-1/2 text-center md:text-left reveal-element"
+            >
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+                    Hi, I'm <br>
+                    <span class="text-white">Mu'ammar Kadafi</span>
+                </h1>
+
+                <h2 class="text-base md:text-xl text-pale-blue/90 font-medium mb-6">
+                    IT Helpdesk Support | Junior Web Developer | IT Support | Server Engineer
+                </h2>
+
+                <p
+                    class="text-pale-blue/70 text-base md:text-lg mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed font-light">
+                    Student of the Information Technology Study Program, Faculty of Engineering,
+                    Pelita Bangsa University, class TI.25.C.3, Student ID Number 312510192.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#contact"
+                        class="px-8 py-3.5 bg-mid-blue text-white font-semibold rounded-xl
+                               hover:bg-soft-blue transition shadow-lg shadow-mid-blue/30
+                               hover:-translate-y-1">
+                        Hire Me Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- IMAGE -->
+            <div
+                class="md:w-1/2 flex justify-center md:justify-end reveal-element"
+                style="transition-delay: 200ms;"
+            >
+                <div class="relative">
+                    <div
+                        class="absolute inset-0 -z-10
+                               bg-gradient-to-tr from-mid-blue/40 to-transparent
+                               rounded-full blur-3xl">
+                    </div>
+
+                    <img
+                        src="img/foto_diri.png"
+                        alt="Mu'ammar Kadafi"
+                        class="max-h-[420px] sm:max-h-[480px] md:max-h-[520px]
+                               w-auto object-contain drop-shadow-2xl
+                               transition duration-500 hover:scale-105">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <section id="skills" class="py-24 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="text-3xl md:text-4xl font-bold text-deep-blue mt-4">Technical Expertise</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="bg-deep-blue p-8 rounded-2xl border border-deep-blue shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-500 transform scale-105 z-10 reveal-element" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white/10 text-white rounded-xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
+                        <i class="bi bi-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Troubleshooting</h3>
+                    <p class="text-sm text-white/70 mb-6 leading-relaxed">
+                        Troubleshooting is performed to identify, analyze, and resolve technical problems efficiently.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Creating a Bootable Windows 10 & 11 Installer</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Windows Installation Using the Conventional Method</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Windows Installation Using the Microsoft Intune Method</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">BIOS Setting</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Standard Company Software Installation</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">BIOS Setting</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Blue Screen</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Meeting Camera Installation</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Printer Installation</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Printer Sharing</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Printer Connection Issues</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Replacing Printer Toner</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">LAN Cable Crimping</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Laptop Battery & Keyboard Replacement</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Data Backup and Restore</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Computer Repositioning</span>
+                    </div>
+                </div>
+
+                <div class="bg-deep-blue p-8 rounded-2xl border border-deep-blue shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-500 transform scale-105 z-10 reveal-element" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white/10 text-white rounded-xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
+                        <i class="bi bi-windows"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Operating System Installation</h3>
+                    <p class="text-sm text-white/70 mb-6 leading-relaxed">
+                        Installation and configuration of the Windows operating system, ensuring that devices run optimally, stably, and are ready for use according to user needs.                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Windows</span>
+                    </div>
+                </div>
+
+                <div class="bg-deep-blue p-8 rounded-2xl border border-deep-blue shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-500 transform scale-105 z-10 reveal-element" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white/10 text-white rounded-xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
+                        <i class="bi bi-microsoft"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Microsoft Office</h3>
+                    <p class="text-sm text-white/70 mb-6 leading-relaxed">
+                        Data Input and Processing.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Microsoft Word</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Microsoft Excel</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Microsoft PowerPoint</span>
+                    </div>
+                </div>
+
+                <div class="bg-deep-blue p-8 rounded-2xl border border-deep-blue shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-500 transform scale-105 z-10 reveal-element" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white/10 text-white rounded-xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
+                        <i class="bi bi-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Database Management</h3>
+                    <p class="text-sm text-white/70 mb-6 leading-relaxed">
+                        Efficient MySQL database management
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="bg-deep-blue p-8 rounded-2xl border border-deep-blue shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-500 transform scale-105 z-10 reveal-element" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white/10 text-white rounded-xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Fullstack Dev</h3>
+                    <p class="text-sm text-white/70 mb-6 leading-relaxed">
+                        Building modern & responsive web applications.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">HTML5</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">CSS</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">JavaScript</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">PHP</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">JSON</span>
+                        <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 bg-deep-blue relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="text-3xl font-bold text-white">Experience</h2>
+            </div>
+
+            <div class="relative border-l-2 border-slate-200 ml-8 md:ml-12 space-y-20">
+                
+                <div class="relative pl-24 md:pl-32 group reveal-element">
+                    <div class="absolute -left-8 md:-left-12 top-2 w-16 h-16 md:w-24 md:h-24 bg-white rounded-xl shadow-sm
+                                flex items-center justify-center group-hover:scale-105 transition z-10">
+                        <img src="img/zit.jpg" alt="ZIT Digital Logo" class="w-3/4 h-3/4 object-contain">
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-100">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-deep-blue">
+                                IT Support
+                            </h3>
+                            <span class="text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full w-fit">
+                                December 2025 – Present
+                            </span>
+                        </div>
+                        <p class="text-slate-700 font-medium">
+                            PT ZIT Digital
+                        </p>
+                        <p class="text-sm text-slate-500 mb-3">
+                            Cikarang Selatan, Kab. Bekasi, Jawa Barat
+                        </p>
+                        <span class="inline-block text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full mb-4">
+                            Freelance
+                        </span>
+                        <ul class="list-disc list-outside ml-5 text-sm text-slate-500 space-y-2">
+                            <li>CCTV installation.</li>
+                            <li>Web development.</li>
+                            <li>Computer hardware repair.</li>
+                            <li>Laptop hardware repair.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="relative pl-24 md:pl-32 group reveal-element">
+                    <div class="absolute -left-8 md:-left-12 top-2 w-16 h-16 md:w-24 md:h-24 bg-white rounded-xl shadow-sm
+                                flex items-center justify-center group-hover:scale-105 transition z-10">
+                        <img src="img/dhi.png" alt="DHI Digital Logo" class="w-3/4 h-3/4 object-contain">
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-100">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-deep-blue">
+                                IT Support
+                            </h3>
+                            <span class="text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full w-fit">
+                                September – December 2025
+                            </span>
+                        </div>
+                        <p class="text-slate-700 font-medium">
+                            PT Digital Hyperspace Indonesia
+                        </p>
+                        <p class="text-sm text-slate-500 mb-3">
+                            Cikarang Pusat, Kab. Bekasi, Jawa Barat
+                        </p>
+                        <span class="inline-block text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full mb-4">
+                            Tencent Cloud Project Contract
+                        </span>
+                        <ul class="list-disc list-outside ml-5 text-sm text-slate-500 space-y-2">
+                            <li>Handling projects and assignments for PT EZSVS.</li>
+                            <li>Conducting site surveys, inventory checks, and planning rack, cable, and switch layouts prior to installation.</li>
+                            <li>Preparing the installation environment, including rack setup and structured cabling design.</li>
+                            <li>Installing and arranging structured cabling systems through trays, ducts, and underfloor pathways with standard labeling and protection.</li>
+                            <li>Installing and connecting servers to power and network infrastructure, ensuring proper grounding, safe assembly, and neat cable management.</li>
+                            <li>Installing UTP (LAN Cat 6), FTP (LAN Cat 5), Fiber Optic (FO) MPO, FO SMF, FO AOC 400G (2×200G), FO AOC 200G (2×100G), and FO LC 2-core cables.</li>
+                            <li>Performing cable tidying for UTP, FTP, fiber optic, and power cables.</li>
+                            <li>Installing physical switches and servers.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="relative pl-24 md:pl-32 group reveal-element">
+                    <div class="absolute -left-8 md:-left-12 top-2 w-16 h-16 md:w-24 md:h-24 bg-white rounded-xl shadow-sm 
+                                flex items-center justify-center group-hover:scale-105 transition z-10">
+                        <img src="img/bbpvp.png" alt="BBPVP Logo" class="w-3/4 h-3/4 object-contain">
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-100">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-deep-blue">
+                                Junior Web Developer
+                            </h3>
+                            <span class="text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full w-fit">
+                                July – August 2025
+                            </span>
+                        </div>
+                        <p class="text-slate-700 font-medium">
+                            BBPVP Bekasi
+                        </p>
+                        <p class="text-sm text-slate-500 mb-3">
+                            Bekasi Selatan, Kota Bekasi, Jawa Barat
+                        </p>
+                        <span class="inline-block text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full mb-4">
+                            Internship
+                        </span>
+                        <ul class="list-disc list-outside ml-5 text-sm text-slate-500 space-y-2">
+                            <li>Implementing user interfaces.</li>
+                            <li>Applying text-based, graphic, and multimedia programming commands.</li>
+                            <li>Organizing functions, files, and programming resources efficiently.</li>
+                            <li>Writing code according to guidelines and best practices.</li>
+                            <li>Implementing structured programming concepts.</li>
+                            <li>Utilizing pre-existing libraries or components.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="relative pl-24 md:pl-32 group reveal-element">
+                    <div class="absolute -left-8 md:-left-12 top-2 w-16 h-16 md:w-24 md:h-24 bg-white rounded-xl shadow-sm 
+                                flex items-center justify-center group-hover:scale-105 transition z-10">
+                        <img src="img/utpe.png" alt="UTPE Logo" class="w-3/4 h-3/4 object-contain">
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-100">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-deep-blue">
+                                IT Helpdesk Support
+                            </h3>
+                            <span class="text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full w-fit">
+                                June – November 2024
+                            </span>
+                        </div>
+                        <p class="text-slate-700 font-medium">
+                            PT United Tractors Pandu Engineer
+                        </p>
+                        <p class="text-sm text-slate-500 mb-3">
+                           Cikarang Utara, Kab. Bekasi, Jawa Barat
+                        </p>
+                        <span class="inline-block text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full mb-4">
+                            Internship
+                        </span>
+                        <ul class="list-disc list-outside ml-5 text-sm text-slate-500 space-y-2">
+                            <li>Performing standard and non-standard company application installations.</li>
+                            <li>Creating bootable Windows 10 and Windows 11.</li>
+                            <li>Installing cameras for meeting purposes.</li>
+                            <li>Repositioning computers according to user needs.</li>
+                            <li>Handling various technical issues, such as: 
+                                PC won't turn on, blue screen or black screen,
+                                printer connection issues (not connected, disconnected, or unable to print). 
+                                network connection issues (disconnected from LAN or Wi-Fi).
+                                replacement of laptop components, such as keyboards and batteries.
+                            </li>
+                            <li>Performing data input.</li>
+                            <li>Performing data backup and restore.</li>
+                            <li>Assisting in lifting and arranging newly arrived items (laptops, PCs, monitors, keyboards, mice).</li>
+                            <li>Assisting in preparing items for shipment (laptops, PCs, monitors, keyboards, mice).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative pl-24 md:pl-32 group reveal-element">
+                    <div class="absolute -left-8 md:-left-12 top-2 w-16 h-16 md:w-24 md:h-24 bg-white rounded-xl shadow-sm 
+                                flex items-center justify-center group-hover:scale-105 transition z-10">
+                        <img src="img//cgs.png" alt="CGS Logo" class="w-3/4 h-3/4 object-contain">
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-100">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-deep-blue">
+                                Production Operator
+                            </h3>
+                            <span class="text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full w-fit">
+                                August – October 2023
+                            </span>
+                        </div>
+                        <p class="text-slate-700 font-medium">
+                            PT CGS Indonesia
+                        </p>
+                        <p class="text-sm text-slate-500 mb-3">
+                           Cikarang Utara, Kab. Bekasi, Jawa Barat
+                        </p>
+                        <span class="inline-block text-xs font-semibold text-mid-blue bg-pale-blue px-3 py-1 rounded-full mb-4">
+                            Internship
+                        </span>
+                        <ul class="list-disc list-outside ml-5 text-sm text-slate-500 space-y-2">
+                            <li>Performing assembly or attaching components to motor and car parts.</li>
+                            <li>Packing components that have been assembled.</li>
+                            <li>Performing maintenance on motor and car parts.</li>
+                            <li>Preparing items for shipment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="text-3xl font-bold text-deep-blue">Education</h2>
+            </div>
+            <div class="relative border-l-2 border-slate-300 ml-8 md:ml-12 space-y-20">
+                <div class="relative pl-24 md:pl-32 group reveal-element">
+                    <div class="absolute -left-8 md:-left-12 top-2 w-16 h-16 md:w-24 md:h-24 
+                                bg-deep-blue rounded-xl shadow-md
+                                flex items-center justify-center group-hover:scale-105 transition z-10">
+                        <img src="img/upb.png" alt="UPB Logo" class="w-3/4 h-3/4 object-contain">
+                    </div>
+                    <div class="bg-deep-blue p-6 rounded-2xl shadow-lg hover:shadow-xl transition">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-white">
+                                S1 Informatics Engineering 
+                            </h3>
+                            <span class="text-xs font-semibold text-deep-blue bg-white px-3 py-1 rounded-full w-fit">
+                                September 2025 – Present
+                            </span>
+                        </div>
+                        <p class="text-slate-200 font-medium">
+                            Pelita Bangsa University
+                        </p>
+                        <p class="text-sm text-slate-300 mb-3">
+                            Cikarang Selatan, Kab. Bekasi, Jawa Barat
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="inline-block text-xs font-semibold text-deep-blue bg-white px-3 py-1 rounded-full">
+                                IP: 0.00
+                            </span>
+                        </div>
+                        <ul class="list-disc list-outside ml-5 text-sm text-slate-200 space-y-2">
+                            <li>Learn the basics of programming using Python.</li>
+                            <li>Create simple systems using Python.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative pl-24 md:pl-32 group reveal-element">
+                    <div class="absolute -left-8 md:-left-12 top-2 w-16 h-16 md:w-24 md:h-24 
+                                bg-deep-blue rounded-xl shadow-md
+                                flex items-center justify-center group-hover:scale-105 transition z-10">
+                        <img src="img/11bks.png" alt="11BKS Logo" class="w-3/4 h-3/4 object-contain">
+                    </div>
+                    <div class="bg-deep-blue p-6 rounded-2xl shadow-lg hover:shadow-xl transition">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-white">
+                                Computer and Network Engineering 
+                            </h3>
+                            <span class="text-xs font-semibold text-deep-blue bg-white px-3 py-1 rounded-full w-fit">
+                                July 2022 – May 2025
+                            </span>
+                        </div>
+                        <p class="text-slate-200 font-medium">
+                            SMK Negeri 1 Cikarang Utara
+                        </p>
+                        <p class="text-sm text-slate-300 mb-3">
+                            Cikarang Utara, Kab. Bekasi, Jawa Barat
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="inline-block text-xs font-semibold text-deep-blue bg-white px-3 py-1 rounded-full">
+                                IPK: 84.82
+                            </span>
+                        </div>
+                        <ul class="list-disc list-outside ml-5 text-sm text-slate-200 space-y-2">
+                            <li>Networking.</li>
+                            <li>MySQL.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact"
+    class="bg-deep-blue text-white py-24 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Collaborate?
+        </h2>
+        <p class="text-pale-blue/70 max-w-xl mx-auto mb-16">
+            I am open to discussing Web Development projects or IT Support opportunities.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <a href="https://www.instagram.com/mrkadafii/"
+            class="group flex items-center gap-4 p-6
+                   bg-white/5 border border-white/10 rounded-xl
+                   hover:bg-white/10 transition">
+             <i class="fa-brands fa-instagram text-2xl text-white-400"></i>
+
+             <div class="text-left">
+                 <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                     instagram
+                 </p>
+                 <p class="font-medium text-sm whitespace-nowrap">
+                    @mrkadafii
+                 </p>
+             </div>
+            </a>
+
+            <a href="https://wa.me/6282321233864"
+               class="group flex items-center gap-4 p-6
+                      bg-white/5 border border-white/10 rounded-xl
+                      hover:bg-white/10 transition">
+                <i class="fa-brands fa-whatsapp text-2xl text-green-400"></i>
+
+                <div class="text-left">
+                    <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                        WhatsApp
+                    </p>
+                    <p class="font-medium text-sm whitespace-nowrap">
+                        0823-2123-3864
+                    </p>
+                </div>
+            </a>
+
+            <a href="mailto:kadafi051207@gmail.com"
+               class="group flex items-center gap-4 p-6
+                      bg-white/5 border border-white/10 rounded-xl
+                      hover:bg-white/10 transition">
+                <i class="fa-regular fa-envelope text-2xl text-soft-blue"></i>
+                <div class="text-left">
+                    <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                        Email
+                    </p>
+                    <p class="font-medium text-sm whitespace-nowrap">
+                        kadafi051207@gmail.com
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://linkedin.com/in/muammar-kadafi"
+               class="group flex items-center gap-4 p-6
+                      bg-white/5 border border-white/10 rounded-xl
+                      hover:bg-white/10 transition">
+
+                <i class="fa-brands fa-linkedin text-2xl text-blue-500"></i>
+                <div class="text-left">
+                    <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                        LinkedIn
+                    </p>
+                    <p class="font-medium text-sm whitespace-nowrap">
+                        muammar-kadafi
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/@muammarkadafi1846"
+               class="group flex items-center gap-4 p-6
+                      bg-white/5 border border-white/10 rounded-xl
+                      hover:bg-white/10 transition">
+
+                <i class="fa-brands fa-youtube text-2xl text-red-500"></i>
+                <div class="text-left">
+                    <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                        YouTube
+                    </p>
+                    <p class="font-medium text-sm whitespace-nowrap">
+                        @muammarkadafi1846
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://www.tiktok.com/@mrkadafi_"
+               class="group flex items-center gap-4 p-6
+                      bg-white/5 border border-white/10 rounded-xl
+                      hover:bg-white/10 transition">
+
+                <i class="fa-brands fa-tiktok text-2xl text-black-500"></i>
+                <div class="text-left">
+                    <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                        TikTok
+                    </p>
+                    <p class="font-medium text-sm whitespace-nowrap">
+                        @mrkadafi
+                    </p>
+                </div>
+            </a>
+
+            <a href="#"
+               class="group flex items-center gap-4 p-6
+                      bg-white/5 border border-white/10 rounded-xl
+                      hover:bg-white/10 transition">
+
+                <i class="fa-brands fa-facebook text-2xl text-blue-500"></i>
+                <div class="text-left">
+                    <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                        Facebook
+                    </p>
+                    <p class="font-medium text-sm whitespace-nowrap">
+                        @mrkadafi
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://t.me/naddfii"
+               class="group flex items-center gap-4 p-6
+                      bg-white/5 border border-white/10 rounded-xl
+                      hover:bg-white/10 transition">
+
+                <i class="fa-brands fa-telegram text-2xl text-blue-500"></i>
+                <div class="text-left">
+                    <p class="text-xs text-white/50 uppercase tracking-widest mb-1">
+                        Telegram
+                    </p>
+                    <p class="font-medium text-sm whitespace-nowrap">
+                        @naddfii
+                    </p>
+                </div>
+            </a>
+        </div>
+        <p class="text-white/30 text-xs tracking-wide">
+            © 2026 Mu'ammar Kadafi. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-element').forEach((el) => {
+            observer.observe(el);
+        });
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
